@@ -17,8 +17,14 @@ body{
 
 .head{
   background-color: rgb(145, 130, 130);
-  font-size: 48px;
+  display: flex;
+  align-items: center;
   padding: 20px;
+}
+
+.title{
+  font-size: 48px;
+  padding-left: 8px;
 }
 
 .aside{
