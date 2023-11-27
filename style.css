@@ -16,7 +16,7 @@ body{
 }
 
 .head{
-  background-color: rgb(145, 130, 130);
+  background-color: #edafb8;
   display: flex;
   align-items: center;
   padding: 20px;
@@ -28,7 +28,7 @@ body{
 }
 
 .aside{
-  background-color: antiquewhite;
+  background-color: #f7e1d7;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -40,12 +40,13 @@ body{
 .boxBtn{
   display: flex;
   align-items: center;
-  padding: 5px;
+  padding: 10px;
+  border-radius: 30px;
 }
 
 .boxBtn:hover{
-  
-  background-color: rgb(202, 193, 181);
+  background-color: #ffffff;
+  cursor: pointer;
 }
 
 .inbox,.today,.this-week,.add-project{
@@ -66,12 +67,14 @@ body{
   margin-top: 50px;
 }
 .text-of-sub-aside{
+  padding-bottom: 10px;
   font-size: 32px;
 }
 
 .footer{
-  background-color: rgb(145, 130, 130);
+  background-color: #edafb8;
   margin-top: auto;
   text-align: center;
   font-size: 20px;
+  align-items:center;
 }
