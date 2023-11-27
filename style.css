@@ -4,3 +4,59 @@
   margin: 0;
   padding: 0;
 }
+
+html{
+  height: 100%;
+}
+
+body{
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.head{
+  background-color: rgb(145, 130, 130);
+  font-size: 48px;
+  padding: 20px;
+}
+
+.aside{
+  background-color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 15%;
+  padding-left: 35px;
+  padding-top: 35px;
+  
+}
+
+.boxBtn{
+  display: flex;
+  align-items: center;
+}
+
+.inbox,.today,.this-week,.add-project{
+  font-size: 24px;
+  width: 200px;
+  background: none;
+  border-style: none;
+  text-align: left;
+  padding-left: 15px;
+  padding: 8px;
+}
+
+.sub-head{
+  margin-top: 50px;
+}
+.text-of-sub-aside{
+  font-size: 32px;
+}
+
+.footer{
+  background-color: rgb(145, 130, 130);
+  margin-top: auto;
+  text-align: center;
+  font-size: 20px;
+}
