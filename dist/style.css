@@ -10,7 +10,7 @@ html{
 }
 
 body{
-  min-height: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -27,14 +27,19 @@ body{
   flex-direction: column;
   height: 100%;
   width: 15%;
-  padding-left: 35px;
-  padding-top: 35px;
+  padding: 35px;
   
 }
 
 .boxBtn{
   display: flex;
   align-items: center;
+  padding: 5px;
+}
+
+.boxBtn:hover{
+  
+  background-color: rgb(202, 193, 181);
 }
 
 .inbox,.today,.this-week,.add-project{
@@ -45,6 +50,10 @@ body{
   text-align: left;
   padding-left: 15px;
   padding: 8px;
+}
+
+.inbox:hover,.today:hover,.this-week:hover,.add-project:hover{
+  cursor: pointer;
 }
 
 .sub-head{
