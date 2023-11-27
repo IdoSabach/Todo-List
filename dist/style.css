@@ -7,6 +7,7 @@
 
 html{
   height: 100%;
+  font-family: 'Poppins', sans-serif;
 }
 
 body{
@@ -27,11 +28,15 @@ body{
   padding-left: 8px;
 }
 
+.boxMain{
+  height: 100%;
+  display: flex;
+}
+
 .aside{
   background-color: #f7e1d7;
   display: flex;
   flex-direction: column;
-  height: 100%;
   width: 15%;
   padding: 35px;
   
@@ -69,6 +74,15 @@ body{
 .text-of-sub-aside{
   padding-bottom: 10px;
   font-size: 32px;
+}
+
+.main-page{
+  padding-left: 100px;
+  padding-top: 35px;
+}
+
+.title-of-main{
+  font-size: 40px;
 }
 
 .footer{
