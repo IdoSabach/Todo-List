@@ -42,7 +42,7 @@ body{
   
 }
 
-.boxBtn{
+.boxBtn,.btnOnMain{
   display: flex;
   align-items: center;
   padding: 10px;
@@ -52,6 +52,21 @@ body{
 .boxBtn:hover{
   background-color: #ffffff;
   cursor: pointer;
+}
+
+.btnOnMain:hover{
+  background-color: #d6d6d6;
+  cursor: pointer;
+}
+
+.add-task{
+  font-size: 24px;
+  width: 1000px;
+  background: none;
+  border-style: none;
+  text-align: left;
+  padding-left: 15px;
+  padding: 8px;
 }
 
 .inbox,.today,.this-week,.add-project{
@@ -64,7 +79,7 @@ body{
   padding: 8px;
 }
 
-.inbox:hover,.today:hover,.this-week:hover,.add-project:hover{
+.inbox:hover,.today:hover,.this-week:hover,.add-project:hover,.add-task:hover{
   cursor: pointer;
 }
 
@@ -80,6 +95,7 @@ body{
   padding-left: 100px;
   padding-top: 35px;
 }
+
 
 .title-of-main{
   font-size: 40px;
