@@ -1,1 +1,4 @@
-console.log("ido")
+import onClick from "./click";
+
+
+onClick()
