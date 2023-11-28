@@ -10,13 +10,13 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/click.js":
-/*!**********************!*\
-  !*** ./src/click.js ***!
-  \**********************/
+/***/ "./src/UI.js":
+/*!*******************!*\
+  !*** ./src/UI.js ***!
+  \*******************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ onClick)\n/* harmony export */ });\nfunction onClick() {\r\n  const inboxBtn = document.querySelector(\".inbox\");\r\n  const toadyBtn = document.querySelector(\".today\");\r\n  const weekBtn = document.querySelector(\".this-week\");\r\n\r\n  const mainPage = document.querySelector(\".main-page\");\r\n  const titleOfMain = document.querySelector(\".title-of-main\");\r\n  const btnOnMain = document.querySelector(\".btnOnMain\");\r\n\r\n  inboxBtn.addEventListener(\"click\", function () {\r\n    btnOnMain.innerHTML = \"\";\r\n    btnOnMain.appendChild(createBtnAddToMain());\r\n    titleOfMain.textContent = \"Inbox\";\r\n  });\r\n\r\n  toadyBtn.addEventListener(\"click\", function () {\r\n    btnOnMain.innerHTML = \"\";\r\n    titleOfMain.textContent = \"Today\";\r\n  });\r\n\r\n  weekBtn.addEventListener(\"click\", function () {\r\n    btnOnMain.innerHTML = \"\";\r\n    titleOfMain.textContent = \"This week\";\r\n  });\r\n}\r\n\r\nfunction createBtnAddToMain() {\r\n  const spanElement = document.createElement(\"span\");\r\n  spanElement.classList.add(\"material-symbols-outlined\");\r\n  spanElement.textContent = \"add\";\r\n\r\n  const buttonElement = document.createElement(\"button\");\r\n  buttonElement.classList.add(\"add-task\");\r\n  buttonElement.textContent = \"Add Task\";\r\n\r\n  spanElement.appendChild(buttonElement);\r\n  return spanElement;\r\n}\r\n\n\n//# sourceURL=webpack://todo-list/./src/click.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ loadHomePage)\n/* harmony export */ });\n/* harmony import */ var _task__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./task */ \"./src/task.js\");\n/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./project */ \"./src/project.js\");\n\r\n\r\n\r\nfunction loadHomePage(){\r\n  console.log(\"ido\")\r\n}\n\n//# sourceURL=webpack://todo-list/./src/UI.js?");
 
 /***/ }),
 
@@ -26,7 +26,27 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _click__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./click */ \"./src/click.js\");\n\r\n\r\n\r\n(0,_click__WEBPACK_IMPORTED_MODULE_0__[\"default\"])()\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _UI__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UI */ \"./src/UI.js\");\n\r\n\r\ndocument.addEventListener('DOMContentLoaded',_UI__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/project.js":
+/*!************************!*\
+  !*** ./src/project.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Project)\n/* harmony export */ });\nclass Project{\r\n  constructor(nameProject){\r\n    this.nameProject = nameProject\r\n  }\r\n\r\n  getName(){\r\n    return this.nameProject\r\n  }\r\n\r\n  setName(nameProject){\r\n    this.nameProject = nameProject\r\n  }\r\n}\n\n//# sourceURL=webpack://todo-list/./src/project.js?");
+
+/***/ }),
+
+/***/ "./src/task.js":
+/*!*********************!*\
+  !*** ./src/task.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Task)\n/* harmony export */ });\nclass Task {\r\n  constructor(description, date) {\r\n    this.description = description;\r\n    this.date = date;\r\n  }\r\n\r\n  getDescription(){\r\n    return this.description\r\n  }\r\n\r\n  getDate(){\r\n    return this.date\r\n  }\r\n\r\n  setDate(date){\r\n    this.date = date\r\n  }\r\n\r\n  setDescription(description){\r\n    this.description = description\r\n  }\r\n}\r\n\r\n\r\n\n\n//# sourceURL=webpack://todo-list/./src/task.js?");
 
 /***/ })
 

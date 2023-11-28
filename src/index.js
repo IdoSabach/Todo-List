@@ -1,4 +1,3 @@
-import onClick from "./click";
+import loadHomePage from "./UI";
 
-
-onClick()
+document.addEventListener('DOMContentLoaded',loadHomePage);
