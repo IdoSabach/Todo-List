@@ -1,5 +1,6 @@
 import Task from "./task";
 import Project from "./project";
+import { pubsub } from "./pubsub";
 // import onClick from "./click";
 
 export default function loadHomePage(){
@@ -10,16 +11,17 @@ export default function loadHomePage(){
 
 
 function addTaskOnInbox(){
-  const addTaskBtn = document.querySelector('.btnOnMain')
+  const addTaskBtn = document.querySelector('.add-task')
   const mainBoxOfPage = document.querySelector('.main-page')
   addTaskBtn.addEventListener('click',function(){
-    mainBoxOfPage.removeChild(addTaskBtn)
-    mainBoxOfPage.appendChild(boxOfCreateTasks())
+    addTaskBtn.style.display = "none"
+    mainBoxOfPage.appendChild(boxOfCreateTasks(addTaskBtn))
     returnToAddTask(mainBoxOfPage,addTaskBtn)
   })
 }
 
-function boxOfCreateTasks(){
+function boxOfCreateTasks(displayBox){
+
   const mainBox = document.createElement('div')
   mainBox.classList.add("mainBoxOfCreateTask")
 
@@ -38,11 +40,24 @@ function boxOfCreateTasks(){
   submitBtn.textContent = "Submit"
   mainForBtn.appendChild(submitBtn)
 
+  submitBtn.addEventListener('click',function(){
+    createLineOfTask(mainBox,inputText.value)
+    mainBox.removeChild(mainForBtn )
+    mainBox.removeChild(inputText)
+    displayBox.style.display = "flex"
+  })
+
   const cancelBtn = document.createElement('button')
   cancelBtn.type = "submit"
   cancelBtn.classList.add("cancelBtn")
   cancelBtn.textContent = "Cancel"
   mainForBtn.appendChild(cancelBtn)
+
+  cancelBtn.addEventListener('click',function(){
+    mainBox.removeChild(mainForBtn )
+    mainBox.removeChild(inputText)
+    displayBox.style.display = "flex"
+  })
 
   return mainBox
 }
@@ -50,3 +65,31 @@ function boxOfCreateTasks(){
 function returnToAddTask(father,child){
   father.appendChild(child);
 }
+
+function createLineOfTask(main,text){
+
+  const taskLine = document.createElement('div')
+  taskLine.classList.add("taskLine")
+
+  const textTask = document.createElement('div')
+  textTask.classList.add("textTask")
+  textTask.textContent = text
+  taskLine.appendChild(textTask)
+
+  const closeIconBtn = document.createElement('button')
+  closeIconBtn.classList.add('closeIconBtn')
+
+  const closeIcon = document.createElement('span')
+  closeIcon.classList.add('material-symbols-outlined')
+  closeIcon.textContent = "close"
+
+  closeIconBtn.appendChild(closeIcon)
+  textTask.appendChild(closeIconBtn)
+
+  closeIconBtn.addEventListener('click',function(){
+    main.removeChild(taskLine)
+  })
+
+  main.appendChild(taskLine)
+}
+
