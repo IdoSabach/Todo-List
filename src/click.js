@@ -22,6 +22,8 @@ export default function onClick() {
     btnOnMain.innerHTML = "";
     titleOfMain.textContent = "This week";
   });
+
+  createBtnAddToMain()
 }
 
 function createBtnAddToMain() {
