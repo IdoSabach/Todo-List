@@ -43,29 +43,26 @@ body {
   padding: 35px;
 }
 
-.boxBtn,
-.btnOnMain {
+.addBtn, .boxBtn{
   display: flex;
   align-items: center;
   padding: 10px;
   border-radius: 30px;
   margin-bottom: 10px;
+  
 }
 
 .main-page{
-  /* width: 100%; */
   flex: 85;
   padding-right: 50px;
-  /* height: 100%; */
-  /* background-color: aqua ; */
 }
 
-.boxBtn:hover {
+.sub-head .addBtn:hover , .boxBtn:hover {
   background-color: #ffffff;
   cursor: pointer;
 }
 
-.btnOnMain:hover {
+.main-page .add-task:hover{
   background-color: #d6d6d6;
   cursor: pointer;
 }
@@ -75,9 +72,12 @@ body {
   width: 100%;
   background: none;
   border-style: none;
-  text-align: left;
   padding-left: 15px;
-  padding: 8px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  margin-bottom: 10px;
 }
 
 .inbox,
@@ -161,4 +161,34 @@ body {
   width: 50%;
   height: 35px;
   margin: 5px 0px 5px 0px;
+}
+
+.textTask{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.textTask{
+  font-size: 24px;
+  padding: 10px;
+  border-radius: 30px;
+  margin: 10px 0px 10px;
+}
+
+.textTask:hover{
+  background-color: #d6d6d6;
+}
+
+.closeIconBtn{
+  border-style: none;
+  display: flex;
+  align-items: center;
+  background: none;
+}
+.closeIconBtn:hover{
+  cursor: pointer;
+  background-color: #edafb8;
+  border-radius: 50%;
+  padding: 2px;
 }
