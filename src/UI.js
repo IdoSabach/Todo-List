@@ -1,11 +1,13 @@
 import Task from "./task";
 import Project from "./project";
 import { pubsub } from "./pubsub";
+// import saveTasksToStorage from "./strong";
+// import loadTasksFromStorage from "./strong"
+// import removeFromStorage from "./strong"
 // import onClick from "./click";
 
 export default function loadHomePage() {
-  // onClick()
-  console.log("ido");
+  loadTasksFromStorage(); 
   addTaskOnInbox();
 }
 
@@ -47,6 +49,8 @@ function boxOfCreateTasks(displayBox) {
       mainBox.removeChild(mainForBtn);
       mainBox.removeChild(inputText);
       displayBox.style.display = "flex";
+
+      saveTasksToStorage();
     }
   });
 
@@ -74,10 +78,6 @@ function createLineOfTask(main, text) {
   const taskLine = document.createElement("div");
   taskLine.classList.add("taskLine");
 
-  // localStorage.setItem("myTask",JSON.stringify(taskLine))
-  // const data = JSON.parse(localStorage.getItem("myTask"))
-  // console.log(data)
-
   const task = new Task(text)
   const textTask = document.createElement("div");
   textTask.classList.add("textTask");
@@ -89,14 +89,42 @@ function createLineOfTask(main, text) {
 
   const closeIcon = document.createElement("span");
   closeIcon.classList.add("material-symbols-outlined");
-  closeIcon.textContent = "close";
+  closeIcon.innerHTML = "close";
 
   closeIconBtn.appendChild(closeIcon);
   textTask.appendChild(closeIconBtn);
 
   closeIconBtn.addEventListener("click", function () {
     main.removeChild(taskLine);
+
+    removeFromStorage(text);
   });
 
   main.appendChild(taskLine);
+}
+
+
+
+function saveTasksToStorage() {
+  const taskLines = document.querySelectorAll(".taskLine .textTask");
+  const tasks = Array.from(taskLines).map((taskLine) => taskLine.textContent);
+
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function loadTasksFromStorage() {
+  const storedTasks = localStorage.getItem("tasks");
+  if (storedTasks) {
+    const tasks = JSON.parse(storedTasks);
+    tasks.forEach((task) => createLineOfTask(document.querySelector(".main-page"), task));
+  }
+}
+
+function removeFromStorage(taskDescription) {
+  const storedTasks = localStorage.getItem("tasks");
+  if (storedTasks) {
+    const tasks = JSON.parse(storedTasks);
+    const updatedTasks = tasks.filter((task) => task !== taskDescription);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+  }
 }
