@@ -70,8 +70,13 @@ function returnToAddTask(father, child) {
 }
 
 function createLineOfTask(main, text) {
+  
   const taskLine = document.createElement("div");
   taskLine.classList.add("taskLine");
+
+  // localStorage.setItem("myTask",JSON.stringify(taskLine))
+  // const data = JSON.parse(localStorage.getItem("myTask"))
+  // console.log(data)
 
   const task = new Task(text)
   const textTask = document.createElement("div");
