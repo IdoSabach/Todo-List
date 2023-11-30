@@ -89,7 +89,7 @@ function createLineOfTask(main, text) {
 
   const closeIcon = document.createElement("span");
   closeIcon.classList.add("material-symbols-outlined");
-  closeIcon.innerHTML = "close";
+  closeIcon.innerHTML = 'close';
 
   closeIconBtn.appendChild(closeIcon);
   textTask.appendChild(closeIconBtn);
