@@ -75,7 +75,7 @@ function createLineOfTask(main,text){
   textTask.classList.add("textTask")
   textTask.textContent = text
   taskLine.appendChild(textTask)
-
+  
   const closeIconBtn = document.createElement('button')
   closeIconBtn.classList.add('closeIconBtn')
 

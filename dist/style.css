@@ -155,12 +155,23 @@ body {
   width: 50%;
   height: 35px;
   margin: 5px 5px 5px 0px;
+  font-size: 20px;
+  background-color: #b9fbc0;
+  border-style: none;
 }
 
 .cancelBtn{
   width: 50%;
   height: 35px;
   margin: 5px 0px 5px 0px;
+  font-size: 20px;
+  background-color: #ffb3c1;
+  border-style: none;
+}
+
+.submitBtn:hover, .cancelBtn:hover{
+  cursor: pointer;
+  border-style: solid;
 }
 
 .textTask{
