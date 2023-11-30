@@ -26,6 +26,7 @@ function boxOfCreateTasks(displayBox) {
   const inputText = document.createElement("input");
   inputText.classList.add("textOfAddTasks");
   inputText.type = "text";
+  inputText.placeholder = "Enter the task description"
   mainBox.appendChild(inputText);
 
   const mainForBtn = document.createElement("div");
@@ -72,9 +73,10 @@ function createLineOfTask(main, text) {
   const taskLine = document.createElement("div");
   taskLine.classList.add("taskLine");
 
+  const task = new Task(text)
   const textTask = document.createElement("div");
   textTask.classList.add("textTask");
-  textTask.textContent = text;
+  textTask.textContent = task.getDescription();
   taskLine.appendChild(textTask);
 
   const closeIconBtn = document.createElement("button");
