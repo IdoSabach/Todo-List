@@ -3,93 +3,93 @@ import Project from "./project";
 import { pubsub } from "./pubsub";
 // import onClick from "./click";
 
-export default function loadHomePage(){
+export default function loadHomePage() {
   // onClick()
-  console.log("ido")
-  addTaskOnInbox()
+  console.log("ido");
+  addTaskOnInbox();
 }
 
-
-function addTaskOnInbox(){
-  const addTaskBtn = document.querySelector('.add-task')
-  const mainBoxOfPage = document.querySelector('.main-page')
-  addTaskBtn.addEventListener('click',function(){
-    addTaskBtn.style.display = "none"
-    mainBoxOfPage.appendChild(boxOfCreateTasks(addTaskBtn))
-    returnToAddTask(mainBoxOfPage,addTaskBtn)
-  })
+function addTaskOnInbox() {
+  const addTaskBtn = document.querySelector(".add-task");
+  const mainBoxOfPage = document.querySelector(".main-page");
+  addTaskBtn.addEventListener("click", function () {
+    addTaskBtn.style.display = "none";
+    mainBoxOfPage.appendChild(boxOfCreateTasks(addTaskBtn));
+    returnToAddTask(mainBoxOfPage, addTaskBtn);
+  });
 }
 
-function boxOfCreateTasks(displayBox){
+function boxOfCreateTasks(displayBox) {
+  const mainBox = document.createElement("div");
+  mainBox.classList.add("mainBoxOfCreateTask");
 
-  const mainBox = document.createElement('div')
-  mainBox.classList.add("mainBoxOfCreateTask")
+  const inputText = document.createElement("input");
+  inputText.classList.add("textOfAddTasks");
+  inputText.type = "text";
+  mainBox.appendChild(inputText);
 
-  const inputText = document.createElement("input")
-  inputText.classList.add("textOfAddTasks")
-  inputText.type = "text"
-  mainBox.appendChild(inputText)
+  const mainForBtn = document.createElement("div");
+  mainForBtn.classList.add("mainForBtn");
+  mainBox.appendChild(mainForBtn);
 
-  const mainForBtn = document.createElement('div')
-  mainForBtn.classList.add("mainForBtn")
-  mainBox.appendChild(mainForBtn)
+  const submitBtn = document.createElement("button");
+  submitBtn.type = "submit";
+  submitBtn.classList.add("submitBtn");
+  submitBtn.textContent = "Submit";
+  mainForBtn.appendChild(submitBtn);
 
-  const submitBtn = document.createElement('button')
-  submitBtn.type = "submit"
-  submitBtn.classList.add("submitBtn")
-  submitBtn.textContent = "Submit"
-  mainForBtn.appendChild(submitBtn)
+  submitBtn.addEventListener("click", function () {
+    if (inputText.value === "") {
+      alert("Enter your text please");
+    } else {
+      createLineOfTask(mainBox, inputText.value);
+      mainBox.removeChild(mainForBtn);
+      mainBox.removeChild(inputText);
+      displayBox.style.display = "flex";
+    }
+  });
 
-  submitBtn.addEventListener('click',function(){
-    createLineOfTask(mainBox,inputText.value)
-    mainBox.removeChild(mainForBtn )
-    mainBox.removeChild(inputText)
-    displayBox.style.display = "flex"
-  })
+  const cancelBtn = document.createElement("button");
+  cancelBtn.type = "submit";
+  cancelBtn.classList.add("cancelBtn");
+  cancelBtn.textContent = "Cancel";
+  mainForBtn.appendChild(cancelBtn);
 
-  const cancelBtn = document.createElement('button')
-  cancelBtn.type = "submit"
-  cancelBtn.classList.add("cancelBtn")
-  cancelBtn.textContent = "Cancel"
-  mainForBtn.appendChild(cancelBtn)
+  cancelBtn.addEventListener("click", function () {
+    mainBox.removeChild(mainForBtn);
+    mainBox.removeChild(inputText);
+    displayBox.style.display = "flex";
+  });
 
-  cancelBtn.addEventListener('click',function(){
-    mainBox.removeChild(mainForBtn )
-    mainBox.removeChild(inputText)
-    displayBox.style.display = "flex"
-  })
-
-  return mainBox
+  return mainBox;
 }
 
-function returnToAddTask(father,child){
+function returnToAddTask(father, child) {
   father.appendChild(child);
 }
 
-function createLineOfTask(main,text){
+function createLineOfTask(main, text) {
+  const taskLine = document.createElement("div");
+  taskLine.classList.add("taskLine");
 
-  const taskLine = document.createElement('div')
-  taskLine.classList.add("taskLine")
+  const textTask = document.createElement("div");
+  textTask.classList.add("textTask");
+  textTask.textContent = text;
+  taskLine.appendChild(textTask);
 
-  const textTask = document.createElement('div')
-  textTask.classList.add("textTask")
-  textTask.textContent = text
-  taskLine.appendChild(textTask)
-  
-  const closeIconBtn = document.createElement('button')
-  closeIconBtn.classList.add('closeIconBtn')
+  const closeIconBtn = document.createElement("button");
+  closeIconBtn.classList.add("closeIconBtn");
 
-  const closeIcon = document.createElement('span')
-  closeIcon.classList.add('material-symbols-outlined')
-  closeIcon.textContent = "close"
+  const closeIcon = document.createElement("span");
+  closeIcon.classList.add("material-symbols-outlined");
+  closeIcon.textContent = "close";
 
-  closeIconBtn.appendChild(closeIcon)
-  textTask.appendChild(closeIconBtn)
+  closeIconBtn.appendChild(closeIcon);
+  textTask.appendChild(closeIconBtn);
 
-  closeIconBtn.addEventListener('click',function(){
-    main.removeChild(taskLine)
-  })
+  closeIconBtn.addEventListener("click", function () {
+    main.removeChild(taskLine);
+  });
 
-  main.appendChild(taskLine)
+  main.appendChild(taskLine);
 }
-
