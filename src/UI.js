@@ -1,13 +1,6 @@
-import Task from "./task";
-import Project from "./project";
-import { pubsub } from "./pubsub";
-// import saveTasksToStorage from "./strong";
-// import loadTasksFromStorage from "./strong"
-// import removeFromStorage from "./strong"
-// import onClick from "./click";
+import { addNewProject , addNewTask } from "./strong";
 
 export default function loadHomePage() {
-  loadTasksFromStorage(); 
   addTaskOnInbox();
 }
 
@@ -49,8 +42,7 @@ function boxOfCreateTasks(displayBox) {
       mainBox.removeChild(mainForBtn);
       mainBox.removeChild(inputText);
       displayBox.style.display = "flex";
-
-      saveTasksToStorage();
+      addNewTask("inbox",inputText.value)
     }
   });
 
@@ -78,10 +70,9 @@ function createLineOfTask(main, text) {
   const taskLine = document.createElement("div");
   taskLine.classList.add("taskLine");
 
-  const task = new Task(text)
   const textTask = document.createElement("div");
   textTask.classList.add("textTask");
-  textTask.textContent = task.getDescription();
+  textTask.textContent = text
   taskLine.appendChild(textTask);
 
   const closeIconBtn = document.createElement("button");
@@ -96,8 +87,6 @@ function createLineOfTask(main, text) {
 
   closeIconBtn.addEventListener("click", function () {
     main.removeChild(taskLine);
-
-    removeFromStorage(text);
   });
 
   main.appendChild(taskLine);
@@ -105,26 +94,5 @@ function createLineOfTask(main, text) {
 
 
 
-function saveTasksToStorage() {
-  const taskLines = document.querySelectorAll(".taskLine .textTask");
-  const tasks = Array.from(taskLines).map((taskLine) => taskLine.textContent);
 
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-}
 
-function loadTasksFromStorage() {
-  const storedTasks = localStorage.getItem("tasks");
-  if (storedTasks) {
-    const tasks = JSON.parse(storedTasks);
-    tasks.forEach((task) => createLineOfTask(document.querySelector(".main-page"), task));
-  }
-}
-
-function removeFromStorage(taskDescription) {
-  const storedTasks = localStorage.getItem("tasks");
-  if (storedTasks) {
-    const tasks = JSON.parse(storedTasks);
-    const updatedTasks = tasks.filter((task) => task !== taskDescription);
-    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-  }
-}
