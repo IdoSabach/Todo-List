@@ -1,4 +1,4 @@
-import { addNewProject , addNewTask } from "./strong";
+import { addNewProject, addNewTask } from "./strong";
 
 export default function loadHomePage() {
   addTaskOnInbox();
@@ -21,7 +21,7 @@ function boxOfCreateTasks(displayBox) {
   const inputText = document.createElement("input");
   inputText.classList.add("textOfAddTasks");
   inputText.type = "text";
-  inputText.placeholder = "Enter the task description"
+  inputText.placeholder = "Enter the task description";
   mainBox.appendChild(inputText);
 
   const mainForBtn = document.createElement("div");
@@ -42,7 +42,7 @@ function boxOfCreateTasks(displayBox) {
       mainBox.removeChild(mainForBtn);
       mainBox.removeChild(inputText);
       displayBox.style.display = "flex";
-      addNewTask("inbox",inputText.value)
+      addNewTask("inbox", inputText.value);
     }
   });
 
@@ -66,13 +66,12 @@ function returnToAddTask(father, child) {
 }
 
 function createLineOfTask(main, text) {
-  
   const taskLine = document.createElement("div");
   taskLine.classList.add("taskLine");
 
   const textTask = document.createElement("div");
   textTask.classList.add("textTask");
-  textTask.textContent = text
+  textTask.textContent = text;
   taskLine.appendChild(textTask);
 
   const closeIconBtn = document.createElement("button");
@@ -80,7 +79,7 @@ function createLineOfTask(main, text) {
 
   const closeIcon = document.createElement("span");
   closeIcon.classList.add("material-symbols-outlined");
-  closeIcon.innerHTML = 'close';
+  closeIcon.innerHTML = "close";
 
   closeIconBtn.appendChild(closeIcon);
   textTask.appendChild(closeIconBtn);
@@ -91,8 +90,3 @@ function createLineOfTask(main, text) {
 
   main.appendChild(taskLine);
 }
-
-
-
-
-

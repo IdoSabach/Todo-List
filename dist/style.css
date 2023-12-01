@@ -43,26 +43,27 @@ body {
   padding: 35px;
 }
 
-.addBtn, .boxBtn{
+.addBtn,
+.boxBtn {
   display: flex;
   align-items: center;
   padding: 10px;
   border-radius: 30px;
   margin-bottom: 10px;
-  
 }
 
-.main-page{
+.main-page {
   flex: 85;
   padding-right: 50px;
 }
 
-.sub-head .addBtn:hover , .boxBtn:hover {
+.sub-head .addBtn:hover,
+.boxBtn:hover {
   background-color: #ffffff;
   cursor: pointer;
 }
 
-.main-page .add-task:hover{
+.main-page .add-task:hover {
   background-color: #d6d6d6;
   cursor: pointer;
 }
@@ -129,13 +130,12 @@ body {
   justify-content: center;
 }
 
-
-.link-footer{
+.link-footer {
   display: flex;
   margin-left: 3px;
 }
 
-.link-footer:hover{
+.link-footer:hover {
   rotate: -360deg;
   transform: scale(1.2);
   transition: 0.4s;
@@ -148,7 +148,7 @@ body {
   padding-left: 5px;
 }
 
-.mainForBtn{
+.mainForBtn {
   display: flex;
 }
 
@@ -161,7 +161,7 @@ body {
   border-style: none;
 }
 
-.cancelBtn{
+.cancelBtn {
   width: 50%;
   height: 35px;
   margin: 5px 0px 5px 0px;
@@ -170,35 +170,36 @@ body {
   border-style: none;
 }
 
-.submitBtn:hover, .cancelBtn:hover{
+.submitBtn:hover,
+.cancelBtn:hover {
   cursor: pointer;
   border-style: solid;
 }
 
-.textTask{
+.textTask {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.textTask{
+.textTask {
   font-size: 24px;
   padding: 10px;
   border-radius: 30px;
   margin: 10px 0px 10px;
 }
 
-.textTask:hover{
+.textTask:hover {
   background-color: #d6d6d6;
 }
 
-.closeIconBtn{
+.closeIconBtn {
   border-style: none;
   display: flex;
   align-items: center;
   background: none;
 }
-.closeIconBtn:hover{
+.closeIconBtn:hover {
   cursor: pointer;
   background-color: #edafb8;
   border-radius: 50%;
