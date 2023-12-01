@@ -1,7 +1,25 @@
-import { addNewProject, addNewTask } from "./strong";
+import { todoList , addNewProject , addNewTask } from "./strong";
 
 export default function loadHomePage() {
+  loadDataFromLocalStorage()
   addTaskOnInbox();
+}
+
+function loadDataFromLocalStorage() {
+  const storedData = JSON.parse(localStorage.getItem("myTodoList"));
+  if (storedData) {
+    todoList.project = storedData.project || [];
+  }
+}
+
+
+function loadMainPage(){
+  const mainBoxOfPage = document.querySelector(".main-page");
+  loadInbox()
+}
+
+function loadInbox(){
+  const taskBlock = document.createElement('div')
 }
 
 function addTaskOnInbox() {
