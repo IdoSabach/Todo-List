@@ -181,7 +181,7 @@ body {
   border-style: solid;
 }
 
-.textTask {
+.textTask{
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -210,3 +210,5 @@ body {
   border-radius: 50%;
   padding: 2px;
 }
+
+
