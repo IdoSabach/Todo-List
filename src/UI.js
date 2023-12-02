@@ -1,4 +1,4 @@
-import { addNewProject, addNewTask, deleteProject, deleteTask, printAndSaveTasks } from "./strong";
+import { addNewProject, addNewTask, deleteProject, deleteTask ,todoList} from "./strong";
 
 export default function loadHomePage() {
   addTaskOnInbox();
@@ -32,7 +32,7 @@ function boxOfCreateTasks(displayBox, type) {
   mainBox.classList.add("mainBoxOfCreateTask");
 
   const nameOfMainPage = document.querySelector(".title-of-main");
-  const nameCurrProject = nameOfMainPage.textContent
+  const nameCurrProject = nameOfMainPage.textContent;
 
   const inputText = document.createElement("input");
   inputText.classList.add("textOfAddTasks");
@@ -87,7 +87,7 @@ function addFatherWithChild(father, child) {
 
 function createLineOfTask(main, text, type) {
   const nameOfMainPage = document.querySelector(".title-of-main");
-  const nameCurrProject = nameOfMainPage.textContent
+  const nameCurrProject = nameOfMainPage.textContent;
   if (type === "task") {
     const taskLine = document.createElement("div");
     taskLine.classList.add("taskLine");
@@ -109,7 +109,7 @@ function createLineOfTask(main, text, type) {
 
     closeIconBtn.addEventListener("click", function () {
       main.removeChild(taskLine);
-      deleteTask(nameCurrProject,text)
+      deleteTask(nameCurrProject, text);
     });
 
     main.appendChild(taskLine);
@@ -125,7 +125,7 @@ function createLineOfTask(main, text, type) {
     nameOfProject.classList.add("nameOfProject");
     nameOfProject.textContent = text;
     projectLine.appendChild(nameOfProject);
-    
+
     const nameProject = projectLine.dataset.type;
 
     nameOfProject.addEventListener("click", function () {
@@ -146,7 +146,7 @@ function createLineOfTask(main, text, type) {
 
     closeIconBtn.addEventListener("click", function () {
       main.removeChild(projectLine);
-      deleteProject(nameProject)
+      deleteProject(nameProject);
     });
 
     main.appendChild(projectLine);
@@ -166,6 +166,18 @@ function loadMainPage() {
         mainPage.removeChild(addTaskBtn);
       }
       titleOfPage.textContent = type;
+      // loadPageAndCleanPage(type);
     });
   });
 }
+
+// function loadPageAndCleanPage(nameProject) {
+//   const mainPage = document.querySelector(".main-page");
+//   mainPage.innerHTML = "";
+
+//   const title = document.createElement("div");
+//   title.classList.add("title-of-main");
+//   title.textContent = nameProject;
+
+//   mainPage.appendChild(title);
+// }

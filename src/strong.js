@@ -46,17 +46,6 @@ function deleteProject(name) {
   }
 }
 
-function printAndSaveTasks(nameProject) {
-  const project = getProjectByName(nameProject);
-  if (project) {
-    console.log(`Tasks for ${nameProject}:`);
-    project.tasks.forEach((task, index) => {
-      console.log(`${index + 1}. ${task.description} - ${task.date}`);
-    });
-  } else {
-    console.error("Project not found.");
-  }
-}
 
 function getProjectByName(name) {
   return todoList.project.find((p) => p.name === name);
@@ -83,4 +72,4 @@ function saveTodoListToLocalStorage() {
 
 localStorage.setItem("myTodoList", JSON.stringify(todoList));
 
-export { addNewProject, addNewTask, deleteProject, deleteTask, printAndSaveTasks};
+export { addNewProject, addNewTask, deleteProject, deleteTask};
