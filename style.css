@@ -50,6 +50,7 @@ body {
   padding: 10px;
   border-radius: 30px;
   margin-bottom: 10px;
+  width: 100%;
 }
 
 .main-page {
@@ -90,7 +91,8 @@ body {
 .inbox,
 .today,
 .this-week,
-.add-project {
+.add-project,
+.nameOfProject {
   font-size: 24px;
   width: 200px;
   background: none;
@@ -104,7 +106,8 @@ body {
 .today:hover,
 .this-week:hover,
 .add-project:hover,
-.add-task:hover {
+.add-task:hover,
+.nameOfProject:hover {
   cursor: pointer;
 }
 
@@ -199,16 +202,26 @@ body {
 }
 
 .closeIconBtn {
-  border-style: none;
+  border-style: solid;
+  border-color: #d6d6d6;
   display: flex;
   align-items: center;
   background: none;
+  border-radius: 50%;
 }
 .closeIconBtn:hover {
   cursor: pointer;
-  background-color: #edafb8;
-  border-radius: 50%;
-  padding: 2px;
+  border-color: #000000;
+}
+
+.projectLine{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nameOfProject{
+  font-size: 24px;
 }
 
 
