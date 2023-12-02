@@ -57,10 +57,15 @@ body {
   padding-right: 50px;
 }
 
-.sub-head .addBtn:hover,
+.addBtn:hover,
 .boxBtn:hover {
   background-color: #ffffff;
   cursor: pointer;
+}
+
+.sub-head{
+  display: flex;
+  flex-direction: column;
 }
 
 .main-page .add-task:hover {

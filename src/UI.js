@@ -1,45 +1,39 @@
 import { todoList , addNewProject , addNewTask } from "./strong";
 
 export default function loadHomePage() {
-  loadDataFromLocalStorage()
   addTaskOnInbox();
+  addNewProjectToAside()
 }
 
-function loadDataFromLocalStorage() {
-  const storedData = JSON.parse(localStorage.getItem("myTodoList"));
-  if (storedData) {
-    todoList.project = storedData.project || [];
-  }
-}
-
-
-function loadMainPage(){
-  const mainBoxOfPage = document.querySelector(".main-page");
-  loadInbox()
-}
-
-function loadInbox(){
-  const taskBlock = document.createElement('div')
-}
 
 function addTaskOnInbox() {
   const addTaskBtn = document.querySelector(".add-task");
   const mainBoxOfPage = document.querySelector(".main-page");
   addTaskBtn.addEventListener("click", function () {
     addTaskBtn.style.display = "none";
-    mainBoxOfPage.appendChild(boxOfCreateTasks(addTaskBtn));
+    mainBoxOfPage.appendChild(boxOfCreateTasks(addTaskBtn,"task"));
     returnToAddTask(mainBoxOfPage, addTaskBtn);
   });
 }
 
-function boxOfCreateTasks(displayBox) {
+function addNewProjectToAside(){
+  const addProjectBtn = document.querySelector(".addBtn");
+  const mainBoxOfProject = document.querySelector(".mainProject");
+  addProjectBtn.addEventListener('click',function(){
+    addProjectBtn.style.display = "none";
+    mainBoxOfProject.appendChild(boxOfCreateTasks(addProjectBtn,"project"));
+    returnToAddTask(mainBoxOfProject , addProjectBtn);
+  })
+}
+
+function boxOfCreateTasks(displayBox,type) {
   const mainBox = document.createElement("div");
   mainBox.classList.add("mainBoxOfCreateTask");
 
   const inputText = document.createElement("input");
   inputText.classList.add("textOfAddTasks");
   inputText.type = "text";
-  inputText.placeholder = "Enter the task description";
+  inputText.placeholder = "Enter description";
   mainBox.appendChild(inputText);
 
   const mainForBtn = document.createElement("div");
@@ -60,7 +54,12 @@ function boxOfCreateTasks(displayBox) {
       mainBox.removeChild(mainForBtn);
       mainBox.removeChild(inputText);
       displayBox.style.display = "flex";
-      addNewTask("inbox", inputText.value);
+      if(type === "task"){
+        addNewTask("inbox", inputText.value);
+      }else{
+        addNewProject(inputText.value)
+      }
+      
     }
   });
 
