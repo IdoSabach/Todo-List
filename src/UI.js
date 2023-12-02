@@ -26,7 +26,6 @@ function addNewProjectToAside() {
   });
 }
 
-
 //the popup input box after click on add task
 function boxOfCreateTasks(displayBox, type) {
   const mainBox = document.createElement("div");
@@ -105,10 +104,14 @@ function createLineOfTask(main, text, type) {
 
     closeIconBtn.addEventListener("click", function () {
       main.removeChild(taskLine);
+      removeFromLocalStorage(taskLine)
     });
 
     main.appendChild(taskLine);
-  }else{
+  } else {
+    const mainPage = document.querySelector(".main-page");
+    const addTaskBtn = document.querySelector(".add-task");
+
     const projectLine = document.createElement("div");
     projectLine.classList.add("boxBtn");
     projectLine.setAttribute("data-type", text);
@@ -117,6 +120,16 @@ function createLineOfTask(main, text, type) {
     nameOfProject.classList.add("nameOfProject");
     nameOfProject.textContent = text;
     projectLine.appendChild(nameOfProject);
+    
+    
+
+    nameOfProject.addEventListener("click", function () {
+      mainPage.appendChild(addTaskBtn);
+      const titleOfPage = document.querySelector(".title-of-main");
+      const nameProject = projectLine.dataset.type;
+      titleOfPage.textContent = nameProject;
+      loadLocalStorage(type);
+    });
 
     const closeIconBtn = document.createElement("button");
     closeIconBtn.classList.add("closeIconBtn");
@@ -130,11 +143,10 @@ function createLineOfTask(main, text, type) {
 
     closeIconBtn.addEventListener("click", function () {
       main.removeChild(projectLine);
+      removeFromLocalStorage(projectLine)
     });
 
     main.appendChild(projectLine);
-
-    console.log(projectLine)
   }
 }
 
@@ -158,4 +170,9 @@ function loadMainPage() {
 
 function loadLocalStorage(nameProject) {
   // print all task of project
+}
+
+function removeFromLocalStorage(line){
+  localStorage.removeItem(line)
+
 }
