@@ -166,18 +166,31 @@ function loadMainPage() {
         mainPage.removeChild(addTaskBtn);
       }
       titleOfPage.textContent = type;
-      // loadPageAndCleanPage(type);
+      // loadStorageAndClean(type)
     });
   });
 }
 
-// function loadPageAndCleanPage(nameProject) {
-//   const mainPage = document.querySelector(".main-page");
-//   mainPage.innerHTML = "";
 
-//   const title = document.createElement("div");
-//   title.classList.add("title-of-main");
-//   title.textContent = nameProject;
+// function loadStorageAndClean(nameProject){
+//   const mainPage = document.querySelector('.main-page')
+//   mainPage.innerHTML = ''
 
-//   mainPage.appendChild(title);
+//   const title = document.createElement('div')
+//   title.classList.add('title-of-main')
+//   title.innerHTML = nameProject
+
+//   const addTaskBtn = document.createElement('button')
+//   addTaskBtn.classList.add('add-task')
+//   addTaskBtn.textContent = 'Add Task'
+
+//   const icon = document.createElement('span')
+//   icon.classList.add('material-symbols-outlined')
+//   icon.textContent = 'add'
+
+//   mainPage.appendChild(title)
+//   addTaskBtn.appendChild(icon)
+//   mainPage.appendChild(addTaskBtn)
+  
 // }
+
