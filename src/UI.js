@@ -31,6 +31,9 @@ function boxOfCreateTasks(displayBox, type) {
   const mainBox = document.createElement("div");
   mainBox.classList.add("mainBoxOfCreateTask");
 
+  const nameOfMainPage = document.querySelector(".title-of-main");
+  const nameCurrProject = nameOfMainPage.textContent
+
   const inputText = document.createElement("input");
   inputText.classList.add("textOfAddTasks");
   inputText.type = "text";
@@ -56,7 +59,7 @@ function boxOfCreateTasks(displayBox, type) {
       mainBox.removeChild(inputText);
       displayBox.style.display = "flex";
       if (type === "task") {
-        addNewTask("inbox", inputText.value);
+        addNewTask(nameCurrProject, inputText.value);
       } else {
         addNewProject(inputText.value);
       }
@@ -83,6 +86,8 @@ function addFatherWithChild(father, child) {
 }
 
 function createLineOfTask(main, text, type) {
+  const nameOfMainPage = document.querySelector(".title-of-main");
+  const nameCurrProject = nameOfMainPage.textContent
   if (type === "task") {
     const taskLine = document.createElement("div");
     taskLine.classList.add("taskLine");
@@ -104,7 +109,7 @@ function createLineOfTask(main, text, type) {
 
     closeIconBtn.addEventListener("click", function () {
       main.removeChild(taskLine);
-      removeFromLocalStorage(taskLine)
+      deleteTask(nameCurrProject,text)
     });
 
     main.appendChild(taskLine);
@@ -126,9 +131,7 @@ function createLineOfTask(main, text, type) {
     nameOfProject.addEventListener("click", function () {
       mainPage.appendChild(addTaskBtn);
       const titleOfPage = document.querySelector(".title-of-main");
-      
       titleOfPage.textContent = nameProject;
-      loadLocalStorage(type);
     });
 
     const closeIconBtn = document.createElement("button");
@@ -163,16 +166,6 @@ function loadMainPage() {
         mainPage.removeChild(addTaskBtn);
       }
       titleOfPage.textContent = type;
-      loadLocalStorage(type);
     });
   });
-}
-
-function loadLocalStorage(nameProject) {
-  // print all task of project
-}
-
-function removeFromLocalStorage(line){
-  localStorage.removeItem(line)
-
 }

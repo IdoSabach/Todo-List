@@ -1,7 +1,7 @@
 export const todoList = {
   project: [
     {
-      name: "inbox",
+      name: "Inbox",
       tasks: [],
     },
     {
@@ -62,11 +62,16 @@ function getProjectByName(name) {
   return todoList.project.find((p) => p.name === name);
 }
 
-function deleteTask(nameProject, taskIndex) {
+function deleteTask(nameProject, taskText) {
   const project = getProjectByName(nameProject);
   if (project) {
-    project.tasks.splice(taskIndex, 1);
-    saveTodoListToLocalStorage();
+    const taskIndex = project.tasks.findIndex((task) => task.description === taskText);
+    if (taskIndex !== -1) {
+      project.tasks.splice(taskIndex, 1);
+      saveTodoListToLocalStorage();
+    } else {
+      console.error("Task not found in the specified project.");
+    }
   } else {
     console.error("Project not found.");
   }
@@ -78,4 +83,4 @@ function saveTodoListToLocalStorage() {
 
 localStorage.setItem("myTodoList", JSON.stringify(todoList));
 
-export { addNewProject, addNewTask, deleteProject, deleteTask, printAndSaveTasks };
+export { addNewProject, addNewTask, deleteProject, deleteTask, printAndSaveTasks};
