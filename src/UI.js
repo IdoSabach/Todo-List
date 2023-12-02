@@ -26,6 +26,8 @@ function addNewProjectToAside() {
   });
 }
 
+
+//the popup input box after click on add task
 function boxOfCreateTasks(displayBox, type) {
   const mainBox = document.createElement("div");
   mainBox.classList.add("mainBoxOfCreateTask");
@@ -106,6 +108,33 @@ function createLineOfTask(main, text, type) {
     });
 
     main.appendChild(taskLine);
+  }else{
+    const projectLine = document.createElement("div");
+    projectLine.classList.add("boxBtn");
+    projectLine.setAttribute("data-type", text);
+
+    const nameOfProject = document.createElement("button");
+    nameOfProject.classList.add("nameOfProject");
+    nameOfProject.textContent = text;
+    projectLine.appendChild(nameOfProject);
+
+    const closeIconBtn = document.createElement("button");
+    closeIconBtn.classList.add("closeIconBtn");
+
+    const closeIcon = document.createElement("span");
+    closeIcon.classList.add("material-symbols-outlined");
+    closeIcon.innerHTML = "close";
+
+    closeIconBtn.appendChild(closeIcon);
+    projectLine.appendChild(closeIconBtn);
+
+    closeIconBtn.addEventListener("click", function () {
+      main.removeChild(projectLine);
+    });
+
+    main.appendChild(projectLine);
+
+    console.log(projectLine)
   }
 }
 
