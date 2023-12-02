@@ -1,4 +1,4 @@
-import { todoList, addNewProject, addNewTask } from "./strong";
+import { addNewProject, addNewTask, deleteProject, deleteTask, printAndSaveTasks } from "./strong";
 
 export default function loadHomePage() {
   addTaskOnInbox();
@@ -121,12 +121,12 @@ function createLineOfTask(main, text, type) {
     nameOfProject.textContent = text;
     projectLine.appendChild(nameOfProject);
     
-    
+    const nameProject = projectLine.dataset.type;
 
     nameOfProject.addEventListener("click", function () {
       mainPage.appendChild(addTaskBtn);
       const titleOfPage = document.querySelector(".title-of-main");
-      const nameProject = projectLine.dataset.type;
+      
       titleOfPage.textContent = nameProject;
       loadLocalStorage(type);
     });
@@ -143,7 +143,7 @@ function createLineOfTask(main, text, type) {
 
     closeIconBtn.addEventListener("click", function () {
       main.removeChild(projectLine);
-      removeFromLocalStorage(projectLine)
+      deleteProject(nameProject)
     });
 
     main.appendChild(projectLine);

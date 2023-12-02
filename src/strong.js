@@ -20,7 +20,7 @@ function addNewProject(name) {
     name: name,
     tasks: [],
   });
-  localStorage.setItem("myTodoList", JSON.stringify(todoList));
+  saveTodoListToLocalStorage();
 }
 
 function addNewTask(nameProject, text) {
@@ -30,13 +30,52 @@ function addNewTask(nameProject, text) {
       description: text,
       date: "01/01/2000",
     });
-    localStorage.setItem("myTodoList", JSON.stringify(todoList));
+    saveTodoListToLocalStorage();
   } else {
     console.error("Project not found.");
   }
 }
 
-localStorage.setItem("myTodoList", JSON.stringify(todoList));
-// const data = JSON.parse(localStorage.getItem("myTodoList"));
+function deleteProject(name) {
+  const projectIndex = todoList.project.findIndex((p) => p.name === name);
+  if (projectIndex !== -1) {
+    todoList.project.splice(projectIndex, 1);
+    saveTodoListToLocalStorage();
+  } else {
+    console.error("Project not found.");
+  }
+}
 
-export { addNewProject, addNewTask };
+function printAndSaveTasks(nameProject) {
+  const project = getProjectByName(nameProject);
+  if (project) {
+    console.log(`Tasks for ${nameProject}:`);
+    project.tasks.forEach((task, index) => {
+      console.log(`${index + 1}. ${task.description} - ${task.date}`);
+    });
+  } else {
+    console.error("Project not found.");
+  }
+}
+
+function getProjectByName(name) {
+  return todoList.project.find((p) => p.name === name);
+}
+
+function deleteTask(nameProject, taskIndex) {
+  const project = getProjectByName(nameProject);
+  if (project) {
+    project.tasks.splice(taskIndex, 1);
+    saveTodoListToLocalStorage();
+  } else {
+    console.error("Project not found.");
+  }
+}
+
+function saveTodoListToLocalStorage() {
+  localStorage.setItem("myTodoList", JSON.stringify(todoList));
+}
+
+localStorage.setItem("myTodoList", JSON.stringify(todoList));
+
+export { addNewProject, addNewTask, deleteProject, deleteTask, printAndSaveTasks };
