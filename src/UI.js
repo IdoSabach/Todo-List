@@ -6,7 +6,10 @@ import {
   todoList,
 } from "./strong";
 
+import appForMedia from "./appForMedia";
+
 export default function loadHomePage() {
+  appForMedia()
   activeBtn();
   addTaskOnInbox();
   addNewProjectToAside();
