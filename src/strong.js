@@ -70,33 +70,35 @@ function saveTodoListToLocalStorage() {
   localStorage.setItem("myTodoList", JSON.stringify(todoList));
 }
 
-function printTasksForProject(projectName) {
-  // Check if data is stored in localStorage
-  const storedData = localStorage.getItem("myTodoList");
-  if (storedData) {
-    // Parse the stored data
-    const storedTodoList = JSON.parse(storedData);
+// function printTasksForProject(projectName) {
+//   // Check if data is stored in localStorage
+//   const storedData = localStorage.getItem("myTodoList");
+//   if (storedData) {
+//     // Parse the stored data
+//     const storedTodoList = JSON.parse(storedData);
 
-    // Find the project in the stored data
-    const project = storedTodoList.project.find((p) => p.name === projectName);
+//     // Find the project in the stored data
+//     const project = storedTodoList.project.find((p) => p.name === projectName);
 
-    if (project) {
-      console.log(`Tasks for ${projectName}:`);
-      if (project.tasks.length > 0) {
-        project.tasks.forEach((task, index) => {
-          console.log(` ${index + 1}. ${task.description} - ${task.date}`);
-        });
-      } else {
-        console.log("No tasks in this project.");
-      }
-    } else {
-      console.log(`Project not found: ${projectName}`);
-    }
-  } else {
-    console.log("No data found in localStorage.");
-  }
-}
+//     if (project) {
+//       console.log(`Tasks for ${projectName}:`);
+//       if (project.tasks.length > 0) {
+//         project.tasks.forEach((task, index) => {
+//           console.log(` ${index + 1}. ${task.description} - ${task.date}`);
+//           // return task.description
+//         });
+//       } else {
+//         console.log("No tasks in this project.");
+//       }
+//     } else {
+//       console.log(`Project not found: ${projectName}`);
+//     }
+//   } else {
+//     console.log("No data found in localStorage.");
+//   }
+// }
+
 
 localStorage.setItem("myTodoList", JSON.stringify(todoList));
 
-export { addNewProject, addNewTask, deleteProject, deleteTask , printTasksForProject};
+export { addNewProject, addNewTask, deleteProject, deleteTask };
