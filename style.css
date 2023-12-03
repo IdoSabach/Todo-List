@@ -37,6 +37,7 @@ body {
 
 #sizeForIcon {
   font-size: 36px;
+  cursor: pointer;
 }
 
 .title {
@@ -259,7 +260,6 @@ body {
   .aside {
     align-items: center;
     display: none;
-    transition: 0.9s;
   }
 
   /* .boxBtn{
