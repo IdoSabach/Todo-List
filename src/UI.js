@@ -6,6 +6,8 @@ import {
   todoList
 } from "./strong";
 
+
+
 export default function loadHomePage() {
   activeBtn();
   addTaskOnInbox();
@@ -37,6 +39,8 @@ function addNewProjectToAside() {
 function boxOfCreateTasks(displayBox, type) {
   const mainBox = document.createElement("div");
   mainBox.classList.add("mainBoxOfCreateTask");
+  const mainOfTasksOnMainPage = document.querySelector(".boxProject");
+  const mainOfTasksOnProject = document.querySelector(".mainProject");
 
   const nameOfMainPage = document.querySelector(".title-of-main");
   const nameCurrProject = nameOfMainPage.textContent;
@@ -61,15 +65,16 @@ function boxOfCreateTasks(displayBox, type) {
     if (inputText.value === "") {
       alert("Enter your text please");
     } else {
-      createLineOfTask(mainBox, inputText.value, type);
+      if(type==="task"){
+        createLineOfTask(mainOfTasksOnMainPage, inputText.value, type);
+        addNewTask(nameCurrProject, inputText.value);
+      }else{
+        createLineOfTask(mainOfTasksOnProject, inputText.value, type);
+        addNewProject(inputText.value);
+      }   
       mainBox.removeChild(mainForBtn);
       mainBox.removeChild(inputText);
       displayBox.style.display = "flex";
-      if (type === "task") {
-        addNewTask(nameCurrProject, inputText.value);
-      } else {
-        addNewProject(inputText.value);
-      }
     }
   });
 
@@ -96,6 +101,7 @@ function createLineOfTask(main, text, type) {
   const nameOfMainPage = document.querySelector(".title-of-main");
   const mainTask = document.querySelector(".boxProject");
   const nameCurrProject = nameOfMainPage.textContent;
+  const addTaskBtn = document.querySelector(".add-task");
   if (type === "task") {
     const taskLine = document.createElement("div");
     taskLine.classList.add("taskLine");
@@ -124,7 +130,6 @@ function createLineOfTask(main, text, type) {
     console.log(main);
   } else {
     const mainPage = document.querySelector(".main-page");
-    const addTaskBtn = document.querySelector(".add-task");
 
     const projectLine = document.createElement("div");
     projectLine.classList.add("boxBtn");
@@ -138,7 +143,6 @@ function createLineOfTask(main, text, type) {
     const nameProject = projectLine.dataset.type;
 
     nameOfProject.addEventListener("click", function () {
-      // mainPage.appendChild(loadProjectOnPage(mainPage,'ido'))
       const titleOfPage = document.querySelector(".title-of-main");
       titleOfPage.textContent = nameProject;
       mainPage.appendChild(addTaskBtn);
@@ -208,13 +212,14 @@ function loadProjectOnPage(text) {
     console.log(project);
     if (project) {
       if (project.tasks.length > 0) {
-        project.tasks.forEach((task, index) => {
-          const line = document.createElement("div");
-          line.classList.add("add-task");
-          line.textContent = task.description;
+        project.tasks.forEach((task) => {
+          createLineOfTask(boxProject, task.description, "task")
+          // const line = document.createElement("div");
+          // line.classList.add("add-task");
+          // line.textContent = task.description;
         
-          boxProject.appendChild(line);
-          console.log(` ${index + 1}. ${task.description} - ${task.date}`);
+          // boxProject.appendChild(line);
+          // console.log(` ${index + 1}. ${task.description} - ${task.date}`);
         });
       }
     } else {
