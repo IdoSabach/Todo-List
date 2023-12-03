@@ -38,6 +38,7 @@ body {
 #sizeForIcon {
   font-size: 36px;
   cursor: pointer;
+  display: none;
 }
 
 .title {
@@ -253,6 +254,9 @@ body {
 }
 
 @media (max-width: 767px) {
+  #sizeForIcon {
+    display: flex;
+  }
   .boxMain {
     display: flex;
     flex-direction: column;
