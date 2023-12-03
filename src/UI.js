@@ -176,13 +176,13 @@ function loadMainPage() {
 }
 
 function activeBtn() {
-  const projectBtns = document.querySelectorAll(".boxBtn");
+  const projectBtn = document.querySelectorAll(".boxBtn");
 
-  projectBtns[0].classList.add("active");
+  projectBtn[0].classList.add("active");
 
-  projectBtns.forEach((btn) => {
+  projectBtn.forEach((btn) => {
     btn.addEventListener("click", function () {
-      projectBtns.forEach((btn) => btn.classList.remove("active"));
+      projectBtn.forEach((btn) => btn.classList.remove("active"));
 
       btn.classList.add("active");
     });
