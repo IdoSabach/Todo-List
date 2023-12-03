@@ -1,6 +1,7 @@
-import { addNewProject, addNewTask, deleteProject, deleteTask ,todoList} from "./strong";
+import { addNewProject, addNewTask, deleteProject, deleteTask, todoList , printTasksForProject} from "./strong";
 
 export default function loadHomePage() {
+  activeBtn()
   addTaskOnInbox();
   addNewProjectToAside();
   loadMainPage();
@@ -26,7 +27,7 @@ function addNewProjectToAside() {
   });
 }
 
-//the popup input box after click on add task
+// The popup input box after click on add task
 function boxOfCreateTasks(displayBox, type) {
   const mainBox = document.createElement("div");
   mainBox.classList.add("mainBoxOfCreateTask");
@@ -129,9 +130,11 @@ function createLineOfTask(main, text, type) {
     const nameProject = projectLine.dataset.type;
 
     nameOfProject.addEventListener("click", function () {
-      mainPage.appendChild(addTaskBtn);
+      // mainPage.appendChild(loadProjectOnPage(mainPage,'ido'))
       const titleOfPage = document.querySelector(".title-of-main");
-      titleOfPage.textContent = nameProject;
+      titleOfPage.textContent = nameProject; 
+      mainPage.appendChild(addTaskBtn);
+      printTasksForProject(nameProject);
     });
 
     const closeIconBtn = document.createElement("button");
@@ -166,31 +169,53 @@ function loadMainPage() {
         mainPage.removeChild(addTaskBtn);
       }
       titleOfPage.textContent = type;
-      // loadStorageAndClean(type)
+      // mainPage.appendChild(loadProjectOnPage(mainPage,titleOfPage.textContent))
+      printTasksForProject(type);
+    });
+  });
+}
+
+function activeBtn() {
+  const projectBtns = document.querySelectorAll(".boxBtn");
+
+  projectBtns[0].classList.add("active");
+
+  projectBtns.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      projectBtns.forEach((btn) => btn.classList.remove("active"));
+
+      btn.classList.add("active");
     });
   });
 }
 
 
-// function loadStorageAndClean(nameProject){
-//   const mainPage = document.querySelector('.main-page')
-//   mainPage.innerHTML = ''
+// function loadProjectOnPage(main, text){
+//   const taskLine = document.createElement("div");
+//     taskLine.classList.add("taskLine");
 
-//   const title = document.createElement('div')
-//   title.classList.add('title-of-main')
-//   title.innerHTML = nameProject
+//     const textTask = document.createElement("div");
+//     textTask.classList.add("textTask");
+//     textTask.textContent = text;
+//     taskLine.appendChild(textTask);
 
-//   const addTaskBtn = document.createElement('button')
-//   addTaskBtn.classList.add('add-task')
-//   addTaskBtn.textContent = 'Add Task'
+//     const closeIconBtn = document.createElement("button");
+//     closeIconBtn.classList.add("closeIconBtn");
 
-//   const icon = document.createElement('span')
-//   icon.classList.add('material-symbols-outlined')
-//   icon.textContent = 'add'
+//     const closeIcon = document.createElement("span");
+//     closeIcon.classList.add("material-symbols-outlined");
+//     closeIcon.innerHTML = "close";
 
-//   mainPage.appendChild(title)
-//   addTaskBtn.appendChild(icon)
-//   mainPage.appendChild(addTaskBtn)
-  
+//     closeIconBtn.appendChild(closeIcon);
+//     textTask.appendChild(closeIconBtn);
+
+//     closeIconBtn.addEventListener("click", function () {
+//       main.removeChild(taskLine);
+//       deleteTask(nameCurrProject, text);
+//     });
+
+//     main.appendChild(taskLine);
 // }
+
+
 

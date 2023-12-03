@@ -43,8 +43,8 @@ body {
   padding: 35px;
 }
 
-.addBtn,
-.boxBtn {
+.boxBtn,
+.addBtn {
   display: flex;
   align-items: center;
   padding: 10px;
@@ -58,8 +58,12 @@ body {
   padding-right: 50px;
 }
 
-.addBtn:hover,
-.boxBtn:hover {
+.boxBtn.active {
+  background-color: white;
+}
+
+.boxBtn:hover,
+.addBtn:hover {
   background-color: #ffffff;
   cursor: pointer;
 }
@@ -87,6 +91,8 @@ body {
   margin-bottom: 10px;
   margin-top: 10px;
 }
+
+
 
 .inbox,
 .today,
