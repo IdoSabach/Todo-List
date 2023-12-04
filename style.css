@@ -73,6 +73,7 @@ body {
 .main-page {
   flex: 85;
   padding-right: 50px;
+  
 }
 
 .boxBtn.active {
@@ -100,6 +101,7 @@ body {
   height: 100%;
   margin-bottom: 15px;
   /* background-color: aqua; */
+  
 }
 
 .add-task {
@@ -214,17 +216,29 @@ body {
 }
 
 .textTask {
+  max-width: 1150px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.textTask {
   font-size: 24px;
   padding: 10px;
   border-radius: 30px;
   margin: 10px 0px 10px;
+  overflow: hidden;
+  background-color: #b9fbc0;
+  overflow: auto;
 }
+
+
+/* .boxProject{
+  overflow: hidden;
+}
+
+.taskLine{
+  overflow: hidden;
+} */
+
+
 
 .textTask:hover {
   background-color: #d6d6d6;
@@ -237,6 +251,7 @@ body {
   align-items: center;
   background: none;
   border-radius: 50%;
+  margin-left: 15px;
 }
 .closeIconBtn:hover {
   cursor: pointer;
