@@ -15,6 +15,7 @@ export const todoList = {
   ],
 };
 
+
 function addNewProject(name) {
   todoList.project.push({
     name: name,

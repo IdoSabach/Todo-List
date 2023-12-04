@@ -3,7 +3,6 @@ import {
   addNewTask,
   deleteProject,
   deleteTask,
-  todoList,
 } from "./strong";
 
 import {appForMedia,closeAside} from "./appForMedia";
@@ -15,6 +14,7 @@ export default function loadHomePage() {
   addNewProjectToAside();
   loadMainPage();
 }
+
 
 function addTaskOnInbox() {
   const addTaskBtn = document.querySelector(".add-task");
@@ -232,3 +232,4 @@ function loadProjectOnPage(text) {
     console.log("No data found in localStorage.");
   }
 }
+
