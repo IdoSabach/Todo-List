@@ -1,5 +1,5 @@
 function appForMedia(){
-  const menu = document.querySelector('.scrollBtn')
+  const menu = document.querySelector('.menu-button')
   const aside = document.querySelector('.aside')
   menu.addEventListener('click',function(){
     if(aside.style.display === "none"){
