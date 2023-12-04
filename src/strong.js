@@ -5,12 +5,12 @@ export const todoList = {
       tasks: [],
     },
     {
-      name: "Today",
-      tasks: [],
-    },
-    {
-      name: "This Week",
-      tasks: [],
+      name: "Default Project",
+      tasks: [
+        { description: "Wake up at six in the morning" },
+        { description: 'Do a workout'},
+        { description: 'Go to work' },
+      ],
     },
   ],
 };
@@ -46,7 +46,6 @@ function deleteProject(name) {
   }
 }
 
-
 function getProjectByName(name) {
   return todoList.project.find((p) => p.name === name);
 }
@@ -54,7 +53,9 @@ function getProjectByName(name) {
 function deleteTask(nameProject, taskText) {
   const project = getProjectByName(nameProject);
   if (project) {
-    const taskIndex = project.tasks.findIndex((task) => task.description === taskText);
+    const taskIndex = project.tasks.findIndex(
+      (task) => task.description === taskText
+    );
     if (taskIndex !== -1) {
       project.tasks.splice(taskIndex, 1);
       saveTodoListToLocalStorage();
@@ -69,7 +70,6 @@ function deleteTask(nameProject, taskText) {
 function saveTodoListToLocalStorage() {
   localStorage.setItem("myTodoList", JSON.stringify(todoList));
 }
-
 
 localStorage.setItem("myTodoList", JSON.stringify(todoList));
 

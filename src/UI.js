@@ -6,7 +6,7 @@ import {
   todoList,
 } from "./strong";
 
-import appForMedia from "./appForMedia";
+import {appForMedia,closeAside} from "./appForMedia";
 
 export default function loadHomePage() {
   appForMedia()
@@ -128,7 +128,7 @@ function createLineOfTask(main, text, type) {
     });
 
     mainTask.appendChild(taskLine);
-    console.log(main);
+    // console.log(main);
   } else {
     const mainPage = document.querySelector(".main-page");
 
@@ -148,6 +148,7 @@ function createLineOfTask(main, text, type) {
       titleOfPage.textContent = nameProject;
       mainPage.appendChild(addTaskBtn);
       loadProjectOnPage(titleOfPage.textContent);
+      closeAside()
     });
 
     const closeIconBtn = document.createElement("button");
@@ -178,11 +179,12 @@ function loadMainPage() {
     button.addEventListener("click", function () {
       const type = button.dataset.type;
       mainPage.appendChild(addTaskBtn);
-      if (type === "Today" || type === "This Week") {
-        mainPage.removeChild(addTaskBtn);
-      }
+      // if (type === "Today" || type === "This Week") {
+      //   mainPage.removeChild(addTaskBtn);
+      // }
       titleOfPage.textContent = type;
       loadProjectOnPage(titleOfPage.textContent);
+      closeAside()
     });
   });
 }
@@ -210,7 +212,7 @@ function loadProjectOnPage(text) {
   if (storedData) {
     const storedTodoList = JSON.parse(storedData);
     const project = storedTodoList.project.find((p) => p.name === text);
-    console.log(project);
+    // console.log(project);
     if (project) {
       if (project.tasks.length > 0) {
         project.tasks.forEach((task) => {

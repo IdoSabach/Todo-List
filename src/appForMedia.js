@@ -1,4 +1,4 @@
-export default function appForMedia(){
+function appForMedia(){
   const menu = document.querySelector('.scrollBtn')
   const aside = document.querySelector('.aside')
   menu.addEventListener('click',function(){
@@ -10,6 +10,13 @@ export default function appForMedia(){
   })
 }
 
+
+function closeAside(){
+  const aside = document.querySelector('.aside')
+  aside.style.display = 'none'
+}
+
+export {appForMedia,closeAside}
 
 
 
