@@ -216,7 +216,7 @@ body {
 }
 
 .textTask {
-  max-width: 1150px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -224,8 +224,6 @@ body {
   padding: 10px;
   border-radius: 30px;
   margin: 10px 0px 10px;
-  overflow: hidden;
-  background-color: #b9fbc0;
   overflow: auto;
 }
 
