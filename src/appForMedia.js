@@ -13,7 +13,10 @@ function appForMedia(){
 
 function closeAside(){
   const aside = document.querySelector('.aside')
-  aside.style.display = 'none'
+  const screenWidth = window.innerWidth;
+  if(screenWidth<767 ){
+    aside.style.display = 'none'
+  }
 }
 
 export {appForMedia,closeAside}
