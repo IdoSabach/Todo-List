@@ -48,13 +48,14 @@ function displayTasksForProject(projectName) {
     console.log(`Project not found: ${projectName}`);
   }
   FirstLoad()
+  closeAside()
 }
 
 function loadProjectsInAside() {
   const mainBoxOfProject = document.querySelector(".mainProject");
   const boxForProjectLine = document.querySelector(".boxForProjectLine");
 
-  boxForProjectLine.innerHTML = ""; // Clear existing projects
+  boxForProjectLine.innerHTML = ""; 
 
   todoList.project.forEach((project) => {
     
@@ -207,7 +208,7 @@ function createLineOfTask(main, text, type) {
     });
 
     mainTask.appendChild(taskLine);
-    // console.log(main);
+
   } else {
     const addTask = document.querySelector(".add-task");
     const mainPage = document.querySelector(".main-page");
@@ -260,32 +261,14 @@ function loadMainPage() {
 
   projectBtn.forEach((button) => {
     button.addEventListener("click", function () {
-      
       const type = button.dataset.type;
       mainPage.appendChild(addTaskBtn);
-      // if (type === "Today" || type === "This Week") {
-      //   mainPage.removeChild(addTaskBtn);
-      // }
       titleOfPage.textContent = type;
       loadProjectOnPage(titleOfPage.textContent);
-      closeAside();
+
     });
   });
 }
-
-// function activeBtn() {
-//   const projectBtn = document.querySelectorAll(".boxBtn");
-
-//   projectBtn[0].classList.add("active");
-
-//   projectBtn.forEach((btn) => {
-//     btn.addEventListener("click", function () {
-//       projectBtn.forEach((btn) => btn.classList.remove("active"));
-
-//       btn.classList.add("active");
-//     });
-//   });
-// }
 
 function loadProjectOnPage(text) {
   const boxProject = document.querySelector(".boxProject");
@@ -296,7 +279,6 @@ function loadProjectOnPage(text) {
   if (storedData) {
     const storedTodoList = JSON.parse(storedData);
     const project = storedTodoList.project.find((p) => p.name === text);
-    // console.log(project);
     if (project) {
       if (project.tasks.length > 0) {
         project.tasks.forEach((task) => {
