@@ -67,8 +67,9 @@ body {
   display: flex;
   flex: 15;
   flex-direction: column;
-  /* width: 15%; */
   padding: 35px;
+  min-width: 250px;
+  /* overflow-wrap: break-word; */
 }
 
 .boxBtn,
@@ -84,7 +85,6 @@ body {
 .main-page {
   flex: 85;
   padding-right: 50px;
-  
 }
 
 .boxBtn.active {
@@ -100,6 +100,7 @@ body {
 .sub-head {
   display: flex;
   flex-direction: column;
+  /* margin-top: 20px; */
 }
 
 .main-page .add-task:hover {
@@ -152,9 +153,6 @@ body {
   cursor: pointer;
 }
 
-.sub-head {
-  margin-top: 50px;
-}
 .text-of-sub-aside {
   padding-bottom: 10px;
   font-size: 32px;
@@ -169,6 +167,7 @@ body {
 
 .title-of-main {
   font-size: 40px;
+  overflow-wrap: break-word;
 }
 
 .footer {
@@ -244,14 +243,19 @@ body {
 
 
 /* .boxProject{
-  overflow: hidden;
+  overflow-wrap: break-word;
 }
 
 .taskLine{
-  overflow: hidden;
+  min-width: 10px;
+  overflow-wrap: break-word;
+  
 } */
 
-
+.nameOfProject{
+  overflow-wrap: break-word;
+  max-width: 180px;
+}
 
 .textTask:hover {
   background-color: #d6d6d6;
@@ -265,6 +269,7 @@ body {
   background: none;
   border-radius: 50%;
   margin-left: 15px;
+  /* margin-right: 15px; */
 }
 .closeIconBtn:hover {
   cursor: pointer;
