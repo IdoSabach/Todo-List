@@ -166,8 +166,11 @@ body {
 }
 
 .title-of-main {
-  font-size: 40px;
+  font-size: 36px;
   overflow-wrap: break-word;
+  white-space: pre-line;
+  word-wrap: break-word;
+  display: inline;
 }
 
 .footer {
@@ -299,9 +302,9 @@ body {
     display: none;
   }
 
-  /* .boxBtn{
-    
-  } */
+  .title{
+    font-size: 36px;
+  }
 
   .mainProject {
     width: 250px;
@@ -328,5 +331,11 @@ body {
 
   button {
     color: #000000;
+  }
+
+  .title-of-main {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
   }
 }

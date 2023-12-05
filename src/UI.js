@@ -24,7 +24,8 @@ function FirstLoad() {
   const addTask = document.querySelector(".add-task");
   const title = document.querySelector(".title-of-main");
   addTask.style.display = "none"
-  if (title.textContent !== "Welcome to your to-do list!") {
+  let x = "Welcome to your to-do list! Start using the interface by adding a project."
+  if (title.textContent !== x) {
     addTask.style.display = "flex"
   }
 }
