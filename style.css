@@ -16,13 +16,15 @@ body {
   display: flex;
   flex-direction: column;
 }
+/*format_list_bulleted*/
 
 .head {
-  background-color: #edafb8;
+  background-color: #52796f;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px;
+  color: white;
 }
 
 .leftPart {
@@ -33,6 +35,15 @@ body {
 .menu-button {
   background: none;
   border-style: none;
+  color: white;
+}
+
+.todo-list-icon{
+  color: white;
+}
+
+#sizeForIconC{
+  font-size: 44px;
 }
 
 #sizeForIcon {
@@ -52,7 +63,7 @@ body {
 }
 
 .aside {
-  background-color: #f7e1d7;
+  background-color: #cad2c5;
   display: flex;
   flex: 15;
   flex-direction: column;
@@ -161,13 +172,15 @@ body {
 }
 
 .footer {
-  background-color: #edafb8;
+  background-color: #52796f;
   margin-top: auto;
   font-size: 20px;
   align-items: center;
   display: flex;
   justify-content: center;
+  color: white;
 }
+
 
 .link-footer {
   display: flex;
@@ -198,6 +211,7 @@ body {
   font-size: 20px;
   background-color: #b9fbc0;
   border-style: none;
+  border-radius: 5px;
 }
 
 .cancelBtn {
@@ -207,6 +221,7 @@ body {
   font-size: 20px;
   background-color: #ffb3c1;
   border-style: none;
+  border-radius: 5px;
 }
 
 .submitBtn:hover,
