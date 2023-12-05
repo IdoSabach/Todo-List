@@ -10,7 +10,7 @@ import {
 import { appForMedia, closeAside } from "./appForMedia";
 
 export default function loadHomePage() {
-  // FirstLoad();
+  FirstLoad();
   loadDataFromLocalStorage();
   appForMedia();
   addTaskOnInbox();
@@ -19,37 +19,22 @@ export default function loadHomePage() {
   loadProjectsInAside();
 }
 
-// function createAddBtn(){
-//   const mainPage = document.querySelector(".main-page");
 
-//   const add = document.createElement('button')
-//   add.classList.add('add-task')
-//   const icon = document.createElement('span')
-//   icon.classList.add('material-symbols-outlined')
-//   icon.textContent = 'add'
-
-//   add.appendChild(icon)
-//   mainPage.appendChild(add)
-
-//   return mainPage
-
-// }
-
-// function FirstLoad() {
-//   console.log(todoList.project.length);
-//   if (todoList.project.length === 0) {
-//     const mainPage = document.querySelector(".main-page");
-//     const addTask = document.querySelector(".add-task");
-//     mainPage.textContent = "hello! its null";
-//   }
-// }
+function FirstLoad() {
+  const addTask = document.querySelector(".add-task");
+  const title = document.querySelector(".title-of-main");
+  addTask.style.display = "none"
+  if (title.textContent !== "Welcome to your to-do list!") {
+    addTask.style.display = "flex"
+  }
+}
 
 function displayTasksForProject(projectName) {
   const mainBoxOfTasks = document.querySelector(".boxProject");
   const project = todoList.project.find((p) => p.name === projectName);
   const nameOfMainPage = document.querySelector(".title-of-main");
   nameOfMainPage.textContent = project.name;
-
+ 
   if (project) {
     mainBoxOfTasks.innerHTML = "";
 
@@ -61,6 +46,7 @@ function displayTasksForProject(projectName) {
   } else {
     console.log(`Project not found: ${projectName}`);
   }
+  FirstLoad()
 }
 
 function loadProjectsInAside() {
@@ -70,6 +56,7 @@ function loadProjectsInAside() {
   boxForProjectLine.innerHTML = ""; // Clear existing projects
 
   todoList.project.forEach((project) => {
+    
     const projectLine = document.createElement("div");
     projectLine.classList.add("boxBtn");
     projectLine.setAttribute("data-type", project.name);
@@ -103,13 +90,13 @@ function loadProjectsInAside() {
 
   const addProjectBtn = document.querySelector(".addBtn");
   mainBoxOfProject.appendChild(addProjectBtn);
+  FirstLoad()
 }
 
 function addTaskOnInbox() {
   const addTaskBtn = document.querySelector(".add-task");
   const mainBoxOfPage = document.querySelector(".main-page");
   addTaskBtn.addEventListener("click", function () {
-    // mainBoxOfPage.appendChild(addTaskBtn);
     addTaskBtn.style.display = "none";
     mainBoxOfPage.appendChild(boxOfCreateTasks(addTaskBtn, "task"));
     addFatherWithChild(mainBoxOfPage, addTaskBtn);
@@ -166,6 +153,7 @@ function boxOfCreateTasks(displayBox, type) {
       mainBox.removeChild(mainForBtn);
       mainBox.removeChild(inputText);
       displayBox.style.display = "flex";
+      
     }
   });
 
@@ -220,6 +208,7 @@ function createLineOfTask(main, text, type) {
     mainTask.appendChild(taskLine);
     // console.log(main);
   } else {
+    const addTask = document.querySelector(".add-task");
     const mainPage = document.querySelector(".main-page");
 
     const projectLine = document.createElement("div");
@@ -238,6 +227,7 @@ function createLineOfTask(main, text, type) {
       titleOfPage.textContent = nameProject;
       mainPage.appendChild(addTaskBtn);
       loadProjectOnPage(titleOfPage.textContent);
+      addTask.style.display = "flex"
       closeAside();
     });
 
@@ -258,6 +248,7 @@ function createLineOfTask(main, text, type) {
 
     main.appendChild(projectLine);
   }
+  FirstLoad()
 }
 
 function loadMainPage() {
@@ -268,6 +259,7 @@ function loadMainPage() {
 
   projectBtn.forEach((button) => {
     button.addEventListener("click", function () {
+      
       const type = button.dataset.type;
       mainPage.appendChild(addTaskBtn);
       // if (type === "Today" || type === "This Week") {
