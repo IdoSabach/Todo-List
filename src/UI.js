@@ -3,23 +3,113 @@ import {
   addNewTask,
   deleteProject,
   deleteTask,
+  todoList,
+  loadDataFromLocalStorage,
 } from "./strong";
 
-import {appForMedia,closeAside} from "./appForMedia";
+import { appForMedia, closeAside } from "./appForMedia";
 
 export default function loadHomePage() {
-  appForMedia()
-  activeBtn();
+  // FirstLoad();
+  loadDataFromLocalStorage();
+  appForMedia();
   addTaskOnInbox();
   addNewProjectToAside();
   loadMainPage();
+  loadProjectsInAside();
 }
 
+// function createAddBtn(){
+//   const mainPage = document.querySelector(".main-page");
+
+//   const add = document.createElement('button')
+//   add.classList.add('add-task')
+//   const icon = document.createElement('span')
+//   icon.classList.add('material-symbols-outlined')
+//   icon.textContent = 'add'
+
+//   add.appendChild(icon)
+//   mainPage.appendChild(add)
+
+//   return mainPage
+
+// }
+
+// function FirstLoad() {
+//   console.log(todoList.project.length);
+//   if (todoList.project.length === 0) {
+//     const mainPage = document.querySelector(".main-page");
+//     const addTask = document.querySelector(".add-task");
+//     mainPage.textContent = "hello! its null";
+//   }
+// }
+
+function displayTasksForProject(projectName) {
+  const mainBoxOfTasks = document.querySelector(".boxProject");
+  const project = todoList.project.find((p) => p.name === projectName);
+  const nameOfMainPage = document.querySelector(".title-of-main");
+  nameOfMainPage.textContent = project.name;
+
+  if (project) {
+    mainBoxOfTasks.innerHTML = "";
+
+    if (project.tasks.length > 0) {
+      project.tasks.forEach((task) => {
+        createLineOfTask(mainBoxOfTasks, task.description, "task");
+      });
+    }
+  } else {
+    console.log(`Project not found: ${projectName}`);
+  }
+}
+
+function loadProjectsInAside() {
+  const mainBoxOfProject = document.querySelector(".mainProject");
+  const boxForProjectLine = document.querySelector(".boxForProjectLine");
+
+  boxForProjectLine.innerHTML = ""; // Clear existing projects
+
+  todoList.project.forEach((project) => {
+    const projectLine = document.createElement("div");
+    projectLine.classList.add("boxBtn");
+    projectLine.setAttribute("data-type", project.name);
+    boxForProjectLine.appendChild(projectLine);
+
+    const nameOfProject = document.createElement("button");
+    nameOfProject.classList.add("nameOfProject");
+    nameOfProject.textContent = project.name;
+    projectLine.appendChild(nameOfProject);
+
+    const closeIconBtn = document.createElement("button");
+    closeIconBtn.classList.add("closeIconBtn");
+
+    const closeIcon = document.createElement("span");
+    closeIcon.classList.add("material-symbols-outlined");
+    closeIcon.innerHTML = "close";
+
+    closeIconBtn.appendChild(closeIcon);
+    projectLine.appendChild(closeIconBtn);
+
+    closeIconBtn.addEventListener("click", function () {
+      boxForProjectLine.removeChild(projectLine);
+      deleteProject(project.name);
+    });
+    nameOfProject.addEventListener("click", function () {
+      displayTasksForProject(project.name);
+    });
+
+    mainBoxOfProject.appendChild(boxForProjectLine);
+  });
+
+  const addProjectBtn = document.querySelector(".addBtn");
+  mainBoxOfProject.appendChild(addProjectBtn);
+}
 
 function addTaskOnInbox() {
   const addTaskBtn = document.querySelector(".add-task");
   const mainBoxOfPage = document.querySelector(".main-page");
   addTaskBtn.addEventListener("click", function () {
+    // mainBoxOfPage.appendChild(addTaskBtn);
     addTaskBtn.style.display = "none";
     mainBoxOfPage.appendChild(boxOfCreateTasks(addTaskBtn, "task"));
     addFatherWithChild(mainBoxOfPage, addTaskBtn);
@@ -148,7 +238,7 @@ function createLineOfTask(main, text, type) {
       titleOfPage.textContent = nameProject;
       mainPage.appendChild(addTaskBtn);
       loadProjectOnPage(titleOfPage.textContent);
-      closeAside()
+      closeAside();
     });
 
     const closeIconBtn = document.createElement("button");
@@ -175,6 +265,7 @@ function loadMainPage() {
   const mainPage = document.querySelector(".main-page");
   const titleOfPage = document.querySelector(".title-of-main");
   const addTaskBtn = document.querySelector(".add-task");
+
   projectBtn.forEach((button) => {
     button.addEventListener("click", function () {
       const type = button.dataset.type;
@@ -184,24 +275,24 @@ function loadMainPage() {
       // }
       titleOfPage.textContent = type;
       loadProjectOnPage(titleOfPage.textContent);
-      closeAside()
+      closeAside();
     });
   });
 }
 
-function activeBtn() {
-  const projectBtn = document.querySelectorAll(".boxBtn");
+// function activeBtn() {
+//   const projectBtn = document.querySelectorAll(".boxBtn");
 
-  projectBtn[0].classList.add("active");
+//   projectBtn[0].classList.add("active");
 
-  projectBtn.forEach((btn) => {
-    btn.addEventListener("click", function () {
-      projectBtn.forEach((btn) => btn.classList.remove("active"));
+//   projectBtn.forEach((btn) => {
+//     btn.addEventListener("click", function () {
+//       projectBtn.forEach((btn) => btn.classList.remove("active"));
 
-      btn.classList.add("active");
-    });
-  });
-}
+//       btn.classList.add("active");
+//     });
+//   });
+// }
 
 function loadProjectOnPage(text) {
   const boxProject = document.querySelector(".boxProject");
@@ -217,19 +308,12 @@ function loadProjectOnPage(text) {
       if (project.tasks.length > 0) {
         project.tasks.forEach((task) => {
           createLineOfTask(boxProject, task.description, "task");
-          // const line = document.createElement("div");
-          // line.classList.add("add-task");
-          // line.textContent = task.description;
-
-          // boxProject.appendChild(line);
-          // console.log(` ${index + 1}. ${task.description} - ${task.date}`);
         });
       }
     } else {
-      console.log(`Project not found: ${projectName}`);
+      // console.log(`Project not found: ${projectName}`);
     }
   } else {
     console.log("No data found in localStorage.");
   }
 }
-

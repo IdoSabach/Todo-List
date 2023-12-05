@@ -1,19 +1,23 @@
-export const todoList = {
+export let todoList = {
   project: [
-    {
-      name: "Inbox",
-      tasks: [],
-    },
-    {
-      name: "Default Project",
-      tasks: [
-        { description: "Wake up at six in the morning" },
-        { description: 'Do a workout'},
-        { description: 'Go to work' },
-      ],
-    },
+    // {
+    //   name: "Main Tasks",
+    //   tasks: [
+    //     { description: "Wake up at six in the morning" },
+    //     { description: 'Do a workout'},
+    //     { description: 'Go to work' },
+    //   ],
+    // },
   ],
 };
+
+function loadDataFromLocalStorage() {
+  const storedData = localStorage.getItem("myTodoList");
+
+  if (storedData) {
+    todoList = JSON.parse(storedData);
+  }
+}
 
 
 function addNewProject(name) {
@@ -72,6 +76,6 @@ function saveTodoListToLocalStorage() {
   localStorage.setItem("myTodoList", JSON.stringify(todoList));
 }
 
-localStorage.setItem("myTodoList", JSON.stringify(todoList));
+// localStorage.setItem("myTodoList", JSON.stringify(todoList));
 
-export { addNewProject, addNewTask, deleteProject, deleteTask };
+export { addNewProject, addNewTask, deleteProject, deleteTask , loadDataFromLocalStorage};
